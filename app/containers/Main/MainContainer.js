@@ -1,12 +1,17 @@
-import React from 'react'
-import { color } from './styles.css'
+import React, { PropTypes } from 'react'
 
 const Main = React.createClass({
   render () {
     return (
-      <p className={color}>{'Hello World! Hello!'}</p>
+      <div>
+        {this.props.children}
+      </div>
     )
   },
 })
+
+Main.propTypes = {
+  children: PropTypes.node,
+}
 
 export default Main
