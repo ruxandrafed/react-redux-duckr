@@ -1,7 +1,8 @@
-.color {
-  color: red;
+.container {
+  width: 100%;
 }
 
-.color:hover {
-  color: blue;
+.innerContainer {
+  max-width: 900px;
+  margin: 0 auto;
 }
