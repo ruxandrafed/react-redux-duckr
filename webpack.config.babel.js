@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -6,13 +8,22 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 });
 
-var PATHS = {
+const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'dist'),
 }
 
-module.exports = {
-  devtool: 'cheap-module-inline-source-map',
+const LAUNCH_COMMAND = process.env.npm_lifecycle_event
+
+const isProduction = LAUNCH_COMMAND === 'production'
+
+const productionPlugin = new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: JSON.stringify('production')
+  }
+})
+
+const base = {
   entry: [
     PATHS.app,
   ],
@@ -26,5 +37,18 @@ module.exports = {
       {test: /\.css$/, loader: 'style-loader!css-loader'}
     ]
   },
+}
+
+const developmentConfig = {
+  devtool: 'cheap-module-inline-source-map',
   plugins: [HtmlWebpackPluginConfig]
-};
+}
+
+const productionConfig = {
+  devtool: 'cheap-module-source-map',
+  plugins: [HtmlWebpackPluginConfig, productionPlugin]
+}
+
+export default Object.assign({}, base,
+  isProduction === true ? productionConfig : developmentConfig
+)
