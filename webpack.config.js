@@ -12,6 +12,7 @@ var PATHS = {
 }
 
 module.exports = {
+  devtool: 'cheap-module-inline-source-map',
   entry: [
     PATHS.app,
   ],
