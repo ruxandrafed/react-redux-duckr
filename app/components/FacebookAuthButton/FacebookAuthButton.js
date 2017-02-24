@@ -3,7 +3,7 @@ import { button } from './styles.css'
 
 FacebookAuthButton.propTypes = {
   onAuth: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
 }
 
 export default function FacebookAuthButton ({onAuth, isFetching}) {
@@ -14,5 +14,5 @@ export default function FacebookAuthButton ({onAuth, isFetching}) {
         : 'Login with Facebook'
       }
     </button>
-  );
-};
+  )
+}

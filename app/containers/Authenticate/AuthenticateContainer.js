@@ -6,11 +6,11 @@ import { connect } from 'react-redux'
 const AuthenticateContainer = React.createClass({
   propTypes: {
     isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.string.isRequired
+    error: PropTypes.string.isRequired,
   },
-  handleAuth() {
+  handleAuth () {
     auth().then((user) => {
-      console.log('Authed User ', user)
+      // console.log('Authed User ', user)
     })
   },
   render () {
@@ -18,16 +18,14 @@ const AuthenticateContainer = React.createClass({
       <Authenticate
         isFetching={this.props.isFetching}
         error={this.props.error}
-        onAuth={this.handleAuth}
-      />
-    )
+        onAuth={this.handleAuth} />)
   },
 })
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     isFetching: state.isFetching,
-    error: state.error
+    error: state.error,
   }
 }
 

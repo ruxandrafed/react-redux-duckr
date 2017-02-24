@@ -14,13 +14,13 @@ export function authUser (uid) {
 
 export function unAuthUser (uid) {
   return {
-    type: UNAUTH_USER
+    type: UNAUTH_USER,
   }
 }
 
 export function fetchingUser (uid) {
   return {
-    type: FETCHING_USER
+    type: FETCHING_USER,
   }
 }
 
@@ -36,7 +36,7 @@ export function fetchingUserSuccess (uid) {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
-    timestamp,
+    // timestamp,
   }
 }
 
@@ -97,16 +97,16 @@ export default function users (state = initialState, action) {
     case FETCHING_USER_SUCCESS:
       return action.user === null
         ? {
-        ...state,
-        isFetching: false,
-        error: '',
-      }
+          ...state,
+          isFetching: false,
+          error: '',
+        }
         : {
-        ...state,
-        isFetching: false,
-        error: '',
-        [action.uid]: user(state[action.uid], action),
-      }
+          ...state,
+          isFetching: false,
+          error: '',
+          [action.uid]: user(state[action.uid], action),
+        }
     default :
       return state
   }
