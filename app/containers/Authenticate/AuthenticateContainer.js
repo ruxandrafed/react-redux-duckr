@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Authenticate } from 'components'
 import auth from 'helpers/auth'
+import { connect } from 'react-redux'
 
 const AuthenticateContainer = React.createClass({
+  propTypes: {
+    isFetching: PropTypes.bool.isRequired,
+    error: PropTypes.string.isRequired
+  },
   handleAuth() {
     auth().then((user) => {
       console.log('Authed User ', user)
@@ -11,12 +16,19 @@ const AuthenticateContainer = React.createClass({
   render () {
     return (
       <Authenticate
-        isFetching={false}
-        error=''
+        isFetching={this.props.isFetching}
+        error={this.props.error}
         onAuth={this.handleAuth}
       />
     )
   },
 })
 
-export default AuthenticateContainer
+function mapStateToProps(state) {
+  return {
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps)(AuthenticateContainer)
