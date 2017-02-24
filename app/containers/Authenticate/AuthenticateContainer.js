@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { Authenticate } from 'components'
 import auth from 'helpers/auth'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import * as userActionCreators from 'redux/modules/users'
 
 const AuthenticateContainer = React.createClass({
@@ -27,11 +28,17 @@ const AuthenticateContainer = React.createClass({
 })
 
 function mapStateToProps (state) {
-  console.log(state)
   return {
     isFetching: state.isFetching,
     error: state.error,
   }
 }
 
-export default connect(mapStateToProps)(AuthenticateContainer)
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(userActionCreators, dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthenticateContainer)
