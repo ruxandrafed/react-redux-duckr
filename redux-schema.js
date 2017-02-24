@@ -1,3 +1,5 @@
+// gets built by all initial states of the reducers
+
 {
   users: {
     isAuthed,
