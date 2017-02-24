@@ -5,7 +5,7 @@ export default function auth () {
         name: 'Ruxandra',
         avatar: 'https://pbs.twimg.com/profile_images/688980615752892417/zYEsC-f-.jpg',
         uid: 'ruxandrafed',
-      })
-    }, 2000)
+      }, 2000)
+    })
   })
 }

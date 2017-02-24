@@ -31,12 +31,12 @@ export function fetchingUserFailure (uid) {
   }
 }
 
-export function fetchingUserSuccess (uid) {
+export function fetchingUserSuccess (uid, user, timestamp) {
   return {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
-    // timestamp,
+    timestamp,
   }
 }
 
