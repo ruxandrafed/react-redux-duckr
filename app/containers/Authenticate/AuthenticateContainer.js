@@ -9,12 +9,15 @@ const AuthenticateContainer = React.createClass({
   propTypes: {
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired,
+    authUser: PropTypes.func.isRequired,
+    fetchingUserSuccess: PropTypes.func.isRequired,
+    fetchingUserFailure: PropTypes.func.isRequired,
   },
   handleAuth () {
-    this.props.dispatch(userActionCreators.fetchingUser())
+    this.props.fetchingUser()
     auth().then((user) => {
-      this.props.dispatch(userActionCreators.fetchingUserSuccess(user.uid, user, Date.now()))
-      this.props.dispatch(userActionCreators.authUser(user.uid))
+      this.props.fetchingUserSuccess(user.uid, user, Date.now())
+      this.props.authUser(user.uid)
     })
     .catch((error) => userActionCreators.fetchingUserFailure(error))
   },
