@@ -1,4 +1,5 @@
-import auth, { logout } from 'helpers/auth'
+import auth, { logout, saveUser } from 'helpers/auth'
+import { formatUserInfo } from 'helpers/utils'
 
 const AUTH_USER = 'AUTH_USER'
 const UNAUTH_USER = 'UNAUTH_USER'
@@ -43,12 +44,19 @@ function fetchingUserSuccess (uid, user, timestamp) {
 }
 
 // The inner function receives the store methods dispatch and getState as parameters.
-
+// Takes all the asynchronousness of auth and wraps it inside of a thunk function
 export function fetchAndHandleAuthedUser () {
   return function (dispatch) {
     dispatch(fetchingUser()) //  returns a promise
     return auth()
-      .then((user) => dispatch(fetchingUserSuccess(user.uid, user, Date.now())))
+      .then(({user, credential}) => {
+//        console.log('user', user)
+        const userData = user.providerData[0]
+        const userInfo = formatUserInfo(userData.displayName, userData.photoURL, userData.uid)
+        return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
+      })
+      // after auth with Firebase, we save it
+      .then(({user}) => saveUser(user))
       .then((user) => dispatch(authUser(user.uid)))
       .catch((error) => dispatch(fetchingUserFailure(error)))
   }
