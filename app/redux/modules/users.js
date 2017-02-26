@@ -44,7 +44,7 @@ function fetchingUserSuccess (uid, user, timestamp) {
 
 // The inner function receives the store methods dispatch and getState as parameters.
 
-export function fetchAndHandleAuthedUser() {
+export function fetchAndHandleAuthedUser () {
   return function (dispatch) {
     dispatch(fetchingUser()) //  returns a promise
     return auth().then((user) => {

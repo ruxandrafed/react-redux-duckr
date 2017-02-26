@@ -4,6 +4,10 @@ import { container, innerContainer } from './styles.css'
 import { connect } from 'react-redux'
 
 const MainContainer = React.createClass({
+  propTypes: {
+    children: PropTypes.node,
+    isAuthed: PropTypes.bool.isRequired,
+  },
   render () {
     return (
       <div className={container}>
@@ -16,13 +20,8 @@ const MainContainer = React.createClass({
   },
 })
 
-MainContainer.propTypes = {
-  children: PropTypes.node,
-  isAuthed: PropTypes.bool.isRequired,
-}
-
 export default connect(
   (state) => ({
-    isAuthed: state.isAuthed
+    isAuthed: state.isAuthed,
   })
 )(MainContainer)
