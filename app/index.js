@@ -5,14 +5,25 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import users from 'redux/modules/users'
 import thunk from 'redux-thunk'
+import { checkIfAuthed } from 'helpers/auth'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(users, /* preloadedState, */ composeEnhancers(
   applyMiddleware(thunk)
 ))
 
-function checkAuth() {
-  console.log(arguments)
+function checkAuth(nextState, replace) {
+  const isAuthed = checkIfAuthed(store)
+  const nextPathName = nextState.location.pathname
+  if (nextPathName === '/' || nextPathName === '/auth') {
+    if (isAuthed === true) {
+      replace ('/feed')
+    }
+  } else {
+    if (isAuthed !== true) {
+      replace ('/auth')
+    }
+  }
 }
 
 ReactDOM.render(
