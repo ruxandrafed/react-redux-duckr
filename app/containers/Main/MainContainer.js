@@ -12,6 +12,8 @@ const MainContainer = React.createClass({
     isAuthed: PropTypes.bool.isRequired,
     authUser: PropTypes.func.isRequired,
     fetchingUserSuccess: PropTypes.func.isRequired,
+    removeFetchingUser: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
   },
   contextTypes: {
     router: PropTypes.object.isRequired,
@@ -23,7 +25,7 @@ const MainContainer = React.createClass({
         const userInfo = formatUserInfo(userData.displayName, userData.photoURL, userData.uid)
         this.props.authUser(user.uid)
         this.props.fetchingUserSuccess(user.uid, userInfo, Date.now())
-        if (this.props.location.pathname === '/') {
+        if (this.props.location.pathname === '/') { // eslint-disable-line react/prop-types
           this.context.router.replace('feed')
         }
       } else {

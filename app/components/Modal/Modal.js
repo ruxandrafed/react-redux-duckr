@@ -5,7 +5,7 @@ import {
   newDuckInput, submitDuckBtn, darkBtn } from './styles.css'
 
 const { object, string, func, bool } = PropTypes
-Modal.PropTypes = {
+Modal.propTypes = {
   duckText: string.isRequired,
   isOpen: bool.isRequired,
   user: object.isRequired,
@@ -16,14 +16,16 @@ Modal.PropTypes = {
 }
 
 export default function Modal (props) {
-  function submitDuck() {
-    console.log('Duck', props.duckText)
-    console.log('User', props.user)
+  function submitDuck () {
+//    console.log('Duck', props.duckText)
+//    console.log('User', props.user)
   }
   return (
     <span className={darkBtn} onClick={props.openModal}>
       {'Duck'}
-      <ReactModal style={modalStyles} isOpen={props.isOpen} onRequestClose={props.closeModal} contentLabel={'New Duck Modal'}>
+      <ReactModal
+        style={modalStyles} isOpen={props.isOpen}
+        onRequestClose={props.closeModal} contentLabel={'New Duck Modal'}>
         <div className={newDuckTop}>
           <span>{'Compose new Duck'}</span>
           <span onClick={props.closeModal} className={pointer}>{'X'}</span>
@@ -37,10 +39,10 @@ export default function Modal (props) {
             className={newDuckInput}
             placeholder="What's on your mind?" />
         </div>
-        <button>
+        <button
           className={submitDuckBtn}
           disabled={props.isSubmitDisabled}
-          onClick={submitDuck}
+          onClick={submitDuck}>
             {'Duck'}
         </button>
       </ReactModal>
@@ -56,5 +58,5 @@ const modalStyles = {
     borderRadius: 5,
     background: '#EBEBEB',
     padding: 0,
-  }
+  },
 }

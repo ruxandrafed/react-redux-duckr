@@ -72,7 +72,7 @@ export function logoutAndUnauth () {
 
 export function removeFetchingUser () {
   return {
-    type: REMOVE_FETCHING_USER
+    type: REMOVE_FETCHING_USER,
   }
 }
 
@@ -146,7 +146,7 @@ export default function users (state = initialState, action) {
     case REMOVE_FETCHING_USER:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
       }
     default :
       return state

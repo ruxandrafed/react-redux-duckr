@@ -4,18 +4,18 @@ const UPDATE_DUCK_TEXT = 'UPDATE_DUCK_TEXT'
 
 export function openModal () {
   return {
-   type: OPEN_MODAL,
- }
+    type: OPEN_MODAL,
+  }
 }
 export function closeModal () {
   return {
-   type: CLOSE_MODAL,
- }
+    type: CLOSE_MODAL,
+  }
 }
 
 export function updateDuckText (newDuckText) {
   return {
-   type: UPDATE_DUCK_TEXT,
+    type: UPDATE_DUCK_TEXT,
     newDuckText,
   }
 }

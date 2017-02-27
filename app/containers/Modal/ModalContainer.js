@@ -1,10 +1,9 @@
-import React from 'react'
 import { Modal } from 'components'
 import { connect } from 'react-redux'
 import * as modalActionCreators from 'redux/modules/modal'
 import { bindActionCreators } from 'redux'
 
-function mapStateToProps({modal, users}) {
+function mapStateToProps ({modal, users}) {
   const duckTextLength = modal.duckText.length
   return {
     user: users[users.authedId] ? users[users.authedId].info : {},
@@ -14,7 +13,7 @@ function mapStateToProps({modal, users}) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(modalActionCreators, dispatch)
 }
 

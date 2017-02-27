@@ -12,7 +12,7 @@ const store = createStore(combineReducers(reducers), /* preloadedState, */ compo
   applyMiddleware(thunk)
 ))
 
-function checkAuth(nextState, replace) {
+function checkAuth (nextState, replace) {
   if (store.getState().users.isFetching === true) {
     return
   }
@@ -20,11 +20,11 @@ function checkAuth(nextState, replace) {
   const nextPathName = nextState.location.pathname
   if (nextPathName === '/' || nextPathName === '/auth') {
     if (isAuthed === true) {
-      replace ('/feed')
+      replace('/feed')
     }
   } else {
     if (isAuthed !== true) {
-      replace ('/auth')
+      replace('/auth')
     }
   }
 }
