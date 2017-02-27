@@ -166,7 +166,7 @@ const initialDuckState = {
   replies: {},
 }
 
-function repliesAndLastUpated (state = initialDuckState, action) {
+function repliesAndLastUpdated (state = initialDuckState, action) {
   switch (action.type) {
     case FETCHING_REPLIES_SUCCESS :
       return {
