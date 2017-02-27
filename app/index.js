@@ -13,6 +13,9 @@ const store = createStore(users, /* preloadedState, */ composeEnhancers(
 ))
 
 function checkAuth(nextState, replace) {
+  if (store.getState().isFetching === true) {
+    return
+  }
   const isAuthed = checkIfAuthed(store)
   const nextPathName = nextState.location.pathname
   if (nextPathName === '/' || nextPathName === '/auth') {
