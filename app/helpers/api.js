@@ -11,10 +11,10 @@ function saveLikeCount (duckId) {
 }
 
 function saveDuck (duck) {
-  // const { duckId, duckPromise } = saveToDucks(duck)
+  const { duckId, duckPromise } = saveToDucks(duck)
 
   return Promise.all([
-    saveToDucks(duck),
+    duckPromise,
     saveToUsersDucks(duck, duckId), // we don't have duckId
     saveLikeCount(duckId),
   ]).then(() => ({...duck, duckId}))
