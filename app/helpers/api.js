@@ -1,5 +1,13 @@
-function saveToDucks (duck) {
+import { ref } from 'config/constants'
 
+function saveToDucks (duck) {
+  const duckId = ref.child('ducks').push().key;
+  const duckPromise = ref.child(`ducks/${duckId}`).set({...duck, duckId})
+
+  return {
+    duckId,
+    duckPromise
+  }
 }
 
 function saveToUsersDucks (duck, duckId) {
