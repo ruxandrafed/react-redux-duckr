@@ -79,32 +79,6 @@
   count,
 }
 
-
-//usersDucks
-{
-  type: FETCHING_USERS_DUCKS,
-  uid,
-}
-
-{
-  type: FETCHING_USERS_DUCKS_ERROR,
-  error: 'Error fetching Users Duck Ids',
-}
-
-{
-  type: FETCHING_USERS_DUCKS_SUCCESS,
-  uid,
-  duckIds,
-  lastUpdated,
-}
-
-{
-  type: ADD_SINGLE_USERS_DUCK,
-  uid,
-  duckId,
-}
-
-
 // usersLikes
 {
   type: ADD_LIKE,
