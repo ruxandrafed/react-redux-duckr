@@ -1,28 +1,3 @@
-// Feed
-{
-  type: SETTING_FEED_LISTENER,
-}
-
-{
-  type: SETTING_FEED_LISTENER_ERROR,
-  error: 'Error fetching feeds.',
-}
-
-{
-  type: SETTING_FEED_LISTENER_SUCCESS,
-  duckIds,
-}
-
-{
-  type: ADD_NEW_DUCK_ID_TO_FEED,
-  duckId,
-}
-
-{
-  type: RESET_NEW_DUCKS_AVAILABLE,
-}
-
-
 //Listeners
 {
   type: ADD_LISTENER,
