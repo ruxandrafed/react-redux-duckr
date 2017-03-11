@@ -1,9 +1,3 @@
-//Listeners
-{
-  type: ADD_LISTENER,
-  listenerId,
-}
-
 //Replies
 {
   type: ADD_REPLY,
