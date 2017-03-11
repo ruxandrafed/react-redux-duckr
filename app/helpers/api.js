@@ -20,7 +20,7 @@ function saveLikeCount (duckId) {
     .set(0)
 }
 
-function saveDuck (duck) {
+export function saveDuck (duck) {
   const { duckId, duckPromise } = saveToDucks(duck)
 
   return Promise.all([
